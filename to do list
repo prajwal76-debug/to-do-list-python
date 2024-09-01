@@ -1,0 +1,33 @@
+#creating the initial window
+window=Tk()
+#giving a title
+window.title("Python To-Do List ")
+
+
+#Frame widget to hold the listbox and the scrollbar
+frame_task=Frame(window)
+frame_task.pack()
+
+#to hold items in a listbox
+listbox_task=Listbox(frame_task,bg="black",fg="white",height=15,width=50,font = "Helvetica")  
+listbox_task.pack(side=tkinter.LEFT)
+
+#Scrolldown in case the total list exceeds the size of the given window 
+scrollbar_task=Scrollbar(frame_task)
+scrollbar_task.pack(side=tkinter.RIGHT,fill=tkinter.Y)
+listbox_task.config(yscrollcommand=scrollbar_task.set)
+scrollbar_task.config(command=listbox_task.yview)
+
+
+#Button widget 
+entry_button=Button(window,text="Add task",width=50,command=entertask)
+entry_button.pack(pady=3)
+
+delete_button=Button(window,text="Delete selected task",width=50,command=deletetask)
+delete_button.pack(pady=3)
+
+mark_button=Button(window,text="Mark as completed ",width=50,command=markcompleted)
+mark_button.pack(pady=3)
+
+
+window.mainloop()
